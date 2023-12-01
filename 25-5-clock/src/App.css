@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Sacramento&display=swap");
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    width: 100vw;
+    height: 100vh;
+    background-color: none;
+  }
+
+  #header {
+    font-size: 120px;
+    text-shadow: 0 0 5px #ffa500, 0 0 15px #ffa500, 0 0 20px #ffa500, 0 0 40px #ffa500, 0 0 60px #ff0000, 0 0 10px #ff8d00, 0 0 98px #ff0000;
+    color: #fff6a9;
+    font-family: "Sacramento", cursive;
+    margin-bottom: 10px;
+}
+  
+  .labels {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+  }
+  
+  .break-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 80px;
+  }
+  
+  .session-labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 80px;
+  }
+  
+  .change, #start_stop, #reset {
+    margin: 20px;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    color: #fff6a9;
+    text-shadow: 0 0 3px #ffa500, 0 0 10px #ffa500, 0 0 15px #ffa500, 0 0 30px #ffa500, 0 0 45px #ff0000, 0 0 7px #ff8d00, 0 0 70px #ff0000;
+}
+  
+  #timer-label {
+    font-size: 50px;
+  }
+
+  .startstopreset > * {
+    width: 100px;
+    margin: 30px;
+  }
+  
+  #signature {
+    position: absolute;
+    bottom: 60px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    font-family: 'Brittany Signature', sans-serif;                                       
+  }

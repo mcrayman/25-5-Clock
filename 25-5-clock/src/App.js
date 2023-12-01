@@ -9,7 +9,8 @@ function App() {
     seconds: 0
   });
   const [isRunning, setIsRunning] = useState(false);
-  const [label, setLabel] = useState('Session');
+  const [label, setLabel] = useState('Focus');
+  const [status, setStatus] = useState('Start')
 
     useEffect(() => {
       let countdown;
@@ -44,7 +45,8 @@ function App() {
     setSessionLength(25);
     setTime({ minutes: 25, seconds: 0 });
     setIsRunning(false);
-    setLabel('Session')
+    setLabel('Session');
+    setStatus('Start');
   };
 
   const handleBreakDecrement = () => {
@@ -81,6 +83,7 @@ function App() {
 
   const handleIsRunning = () => {
     setIsRunning(!isRunning);
+    setStatus(status === 'Start' ? 'Pause' : 'Start');
   }
 
   const handleSwitch = () => {
@@ -102,19 +105,46 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <div id="break-label">Break Length: </div>
-      <div id="session-label">Session Length: </div>
-      <button id="break-decrement" onClick={handleBreakDecrement}>Decrement break</button>
-      <button id="session-decrement" onClick={handleSessionDecrement}>Decrement session</button>
-      <button id="break-increment" onClick={handleBreakIncrement}>Increment break</button>
-      <button id="session-increment" onClick={handleSessionIncrement}>Increment session</button>
-      <div id="break-length">{breakLength}</div>
-      <div id="session-length">{sessionLength}</div>
-      <div id="timer-label">{label}</div>
-      <div id="time-left">{time.minutes}:{time.seconds < 10 ? `0${time.seconds}` : time.seconds}</div>
-      <button id="start_stop" onClick={handleIsRunning}>start stop</button>
-      <button id="reset" onClick={handleReset}>reset</button>
+    <div className='App'>
+
+    <div id="header">Pomofocus</div>
+
+    <div className='labels'>
+      <div className='break-labels'>
+        <div className='break'>
+          <div id="break-label">Break Length</div>
+          <div id="break-length">{breakLength}</div>
+        </div>
+        <div className='break-changes'>
+          <button className='change break-change' id="break-decrement" onClick={handleBreakDecrement}><i class="fa-solid fa-arrow-down fa-xl"></i></button>
+          <button className='change break-change' id="break-increment" onClick={handleBreakIncrement}><i class="fa-solid fa-arrow-up fa-xl"></i></button>
+        </div>
+      </div>
+      <div className='session-labels'>
+        <div className='session'>
+          <div id="session-label">Session Length</div>
+          <div id="session-length">{sessionLength}</div>
+        </div>
+        <div className='session-changes'>
+          <button className='change session-change' id="session-decrement" onClick={handleSessionDecrement}><i class="fa-solid fa-arrow-down fa-xl"></i></button>
+          <button className='change session-change' id="session-increment" onClick={handleSessionIncrement}><i class="fa-solid fa-arrow-up fa-xl"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="timer-label">{label}</div>
+    <div id="time-left">
+      <span className="countdown font-mono text-6xl">
+        <span style={{"--value":time.minutes}}></span>:
+        <span style={{"--value":time.seconds}}></span>
+      </span>
+    </div>  
+
+    <div className='startstopreset'>
+      <button id="start_stop" onClick={handleIsRunning}>{status === 'Start' ? <i class="fa-solid fa-play fa-2xl"></i> : <i class="fa-solid fa-pause fa-2xl"></i>}</button>
+      <button id="reset" onClick={handleReset}><i class="fa-solid fa-rotate-left fa-2xl"></i></button>
+    </div>
+    <div id='signature'>Matthew McMeans</div>
     </div>
   );
 }
